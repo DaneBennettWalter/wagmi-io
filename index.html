@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WAGMI — We're All Gonna Make It</title>
+<meta name="description" content="WAGMI — We're All Gonna Make It. Building the future, together.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+  
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --border: #1e1e2e;
+    --text: #e8e8f0;
+    --dim: #8888aa;
+    --accent: #00ff88;
+    --accent2: #00ccff;
+    --glow: rgba(0, 255, 136, 0.15);
+  }
+  
+  body {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  /* Animated gradient background */
+  .bg-effect {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(0, 204, 255, 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(136, 0, 255, 0.03) 0%, transparent 50%);
+    animation: bgPulse 8s ease-in-out infinite alternate;
+    z-index: 0;
+  }
+  
+  @keyframes bgPulse {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .logo {
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+    margin-bottom: 0.5rem;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+  
+  .tagline {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-weight: 300;
+    color: var(--dim);
+    margin-bottom: 3rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  
+  .manifesto {
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+  
+  .manifesto p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--dim);
+    margin-bottom: 1.5rem;
+  }
+  
+  .manifesto strong {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  
+  .stats {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .stat {
+    text-align: center;
+  }
+  
+  .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--dim);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 0.3rem;
+  }
+  
+  .cta {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; right: 100%; bottom: 0;
+    background: var(--accent);
+    transition: all 0.3s ease;
+    z-index: -1;
+  }
+  
+  .cta:hover {
+    color: var(--bg);
+  }
+  
+  .cta:hover::before {
+    left: 0; right: 0;
+  }
+  
+  .footer {
+    position: absolute;
+    bottom: 2rem;
+    font-size: 0.8rem;
+    color: var(--dim);
+    letter-spacing: 0.1em;
+  }
+  
+  .pulse-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    animation: pulse 2s ease-in-out infinite;
+    vertical-align: middle;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(0, 255, 136, 0); }
+  }
+  
+  @media (max-width: 600px) {
+    .stats { gap: 1.5rem; }
+    .stat-value { font-size: 1.5rem; }
+    .container { padding: 0 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-effect"></div>
+<div class="container">
+  <div class="logo">WAGMI</div>
+  <div class="tagline">We're All Gonna Make It</div>
+  
+  <div class="manifesto">
+    <p>Born in the trenches of crypto Twitter. Forged in bull markets and bear markets alike. <strong>WAGMI</strong> isn't just a meme — it's a mindset.</p>
+    <p>Building something <strong>real</strong>. Something that lasts beyond the hype cycles. The future belongs to the builders, not the spectators.</p>
+  </div>
+  
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-value">∞</span>
+      <div class="stat-label">Conviction</div>
+    </div>
+    <div class="stat">
+      <span class="stat-value">24/7</span>
+      <div class="stat-label">Building</div>
+    </div>
+    <div class="stat">
+      <span class="stat-value">🤝</span>
+      <div class="stat-label">Together</div>
+    </div>
+  </div>
+  
+  <a href="mailto:danebennettwalter@gmail.com?subject=WAGMI" class="cta">Get In Touch</a>
+  
+  <div class="footer"><span class="pulse-dot"></span> wagmi.io</div>
+</div>
+</body>
+</html>

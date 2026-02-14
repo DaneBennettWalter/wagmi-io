@@ -1,0 +1,375 @@
+/* ========== RESET & BASE ========== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a2e;--bg4:#222238;
+  --text:#e8e8f0;--text2:#8888aa;--text3:#55556a;
+  --green:#00ff88;--cyan:#00ccff;--purple:#8b5cf6;--red:#ff4466;--orange:#ffaa00;
+  --border:#2a2a3e;--radius:12px;--radius-sm:8px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Space Grotesk',system-ui,sans-serif;
+  background:var(--bg);color:var(--text);
+  min-height:100vh;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+input,select,textarea,button{font-family:inherit;font-size:inherit}
+input[type="number"]{-moz-appearance:textfield}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none}
+
+/* ========== BG EFFECTS ========== */
+.bg-effects{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.gradient-orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.15;animation:orbFloat 20s ease-in-out infinite}
+.orb-1{width:600px;height:600px;background:var(--green);top:-200px;left:-100px}
+.orb-2{width:500px;height:500px;background:var(--cyan);bottom:-150px;right:-100px;animation-delay:-7s}
+.orb-3{width:400px;height:400px;background:var(--purple);top:50%;left:50%;animation-delay:-14s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-30px) scale(1.1)}66%{transform:translate(-30px,50px) scale(.9)}}
+
+/* ========== NAVBAR ========== */
+.navbar{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-img{width:32px;height:32px;border-radius:8px}
+.logo-text{font-size:22px;font-weight:700;color:var(--text);letter-spacing:1px}
+.logo-badge{font-size:10px;background:var(--green);color:#000;padding:2px 6px;border-radius:4px;font-weight:600}
+.nav-links{display:flex;gap:4px}
+.nav-link{padding:8px 16px;border-radius:var(--radius-sm);color:var(--text2);font-weight:500;transition:.2s;text-decoration:none;font-size:15px}
+.nav-link:hover{color:var(--text);background:rgba(255,255,255,.05);text-decoration:none}
+.nav-link.active{color:var(--green);background:rgba(0,255,136,.08)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.network-badge{display:flex;align-items:center;gap:6px;padding:6px 12px;background:var(--bg3);border-radius:20px;font-size:13px;color:var(--text2);cursor:pointer;border:1px solid var(--border)}
+.network-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.btn-connect{display:flex;align-items:center;gap:8px;padding:8px 20px;background:linear-gradient(135deg,var(--green),var(--cyan));color:#000;border:none;border-radius:var(--radius-sm);font-weight:600;font-size:14px;cursor:pointer;transition:.2s}
+.btn-connect:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,255,136,.3)}
+.mobile-menu{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:4px}
+.mobile-menu span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:.2s}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);z-index:99;padding:12px}
+.mobile-nav.open{display:flex;flex-direction:column;gap:4px}
+.mobile-nav-link{padding:12px 16px;border-radius:var(--radius-sm);color:var(--text2);font-weight:500;text-decoration:none}
+.mobile-nav-link.active{color:var(--green);background:rgba(0,255,136,.08)}
+
+/* ========== BUTTONS ========== */
+.btn-primary{padding:10px 24px;background:linear-gradient(135deg,var(--green),#00cc88);color:#000;border:none;border-radius:var(--radius-sm);font-weight:600;cursor:pointer;transition:.2s;font-size:15px}
+.btn-primary:hover{box-shadow:0 4px 20px rgba(0,255,136,.3);transform:translateY(-1px)}
+.btn-secondary{padding:10px 24px;background:var(--bg3);color:var(--text);border:1px solid var(--border);border-radius:var(--radius-sm);font-weight:500;cursor:pointer;transition:.2s}
+.btn-secondary:hover{background:var(--bg4)}
+.btn-full{width:100%}
+.icon-btn{background:none;border:none;cursor:pointer;font-size:18px;opacity:.6;transition:.2s}
+.icon-btn:hover{opacity:1}
+
+/* ========== TAB CONTENT ========== */
+.tab-content{display:none;max-width:1400px;margin:0 auto;padding:24px;position:relative;z-index:1}
+.tab-content.active{display:block}
+
+/* ========== EXCHANGE ========== */
+.exchange-layout{display:grid;grid-template-columns:480px 1fr;gap:24px;align-items:start}
+.swap-container{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.swap-tabs{display:flex;gap:4px;margin-bottom:20px;background:var(--bg);border-radius:var(--radius-sm);padding:4px}
+.swap-tab{flex:1;padding:8px;background:none;border:none;color:var(--text2);font-weight:500;border-radius:6px;cursor:pointer;transition:.2s}
+.swap-tab.active{background:var(--bg3);color:var(--text)}
+.swap-panel{display:none}.swap-panel.active{display:block}
+.swap-settings{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:13px;color:var(--text2)}
+.swap-input-group{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px;transition:.2s}
+.swap-input-group:focus-within{border-color:var(--green)}
+.swap-input-group label{font-size:13px;color:var(--text2);margin-bottom:8px;display:block}
+.swap-input-row{display:flex;align-items:center;gap:8px}
+.swap-input-row input{flex:1;background:none;border:none;color:var(--text);font-size:28px;font-weight:600;outline:none;min-width:0}
+.swap-input-row input::placeholder{color:var(--text3)}
+.token-select{display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:6px 12px;color:var(--text);font-weight:600;cursor:pointer;white-space:nowrap;transition:.2s;font-size:15px}
+.token-select:hover{background:var(--bg4)}
+.token-icon{width:22px;height:22px;border-radius:50%}
+.swap-balance{font-size:13px;color:var(--text2);margin-top:8px;display:flex;align-items:center;gap:8px}
+.max-btn{background:none;border:none;color:var(--cyan);font-weight:600;font-size:12px;cursor:pointer;text-transform:uppercase}
+.max-btn:hover{color:var(--green)}
+.swap-arrow{display:flex;align-items:center;justify-content:center;width:40px;height:40px;margin:-8px auto;background:var(--bg2);border:4px solid var(--bg);border-radius:50%;cursor:pointer;z-index:2;position:relative;color:var(--text2);transition:.2s}
+.swap-arrow:hover{color:var(--green);transform:rotate(180deg)}
+.swap-details{margin:16px 0;padding:12px;background:var(--bg);border-radius:var(--radius-sm);font-size:13px}
+.detail-row{display:flex;justify-content:space-between;padding:4px 0;color:var(--text2)}
+.detail-row span:last-child{color:var(--text)}
+.green{color:var(--green)!important}
+.red{color:var(--red)!important}
+.plus-icon{text-align:center;font-size:24px;color:var(--text2);margin:8px 0}
+
+/* Liquidity */
+.liq-tabs{display:flex;gap:8px;margin-bottom:16px}
+.liq-tab{padding:6px 16px;background:var(--bg);border:1px solid var(--border);border-radius:20px;color:var(--text2);cursor:pointer;font-size:14px;transition:.2s}
+.liq-tab.active{background:var(--bg3);color:var(--text);border-color:var(--green)}
+.liq-info{margin:16px 0;padding:12px;background:var(--bg);border-radius:var(--radius-sm);font-size:13px}
+.range-container{margin:16px 0}
+.range-container label{display:block;margin-bottom:8px;color:var(--text2);font-size:14px}
+.range-slider{width:100%;-webkit-appearance:none;height:6px;background:var(--bg4);border-radius:3px;outline:none}
+.range-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;background:var(--green);border-radius:50%;cursor:pointer}
+.range-val{display:block;text-align:center;font-size:32px;font-weight:700;margin:12px 0;color:var(--green)}
+.range-presets{display:flex;gap:8px;justify-content:center}
+.range-presets button{padding:4px 16px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text2);cursor:pointer}
+
+/* Market sidebar */
+.market-sidebar{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.market-sidebar h3{margin-bottom:16px;font-size:16px}
+.market-item{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.market-item:last-child{border-bottom:none}
+.market-token{display:flex;align-items:center;gap:8px}
+.market-token-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#000}
+.market-price{font-weight:600;font-size:14px;text-align:right}
+.market-change{font-size:13px;font-weight:500;text-align:right}
+
+/* ========== NFT ========== */
+.nft-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:24px}
+.nft-header h1{font-size:28px}
+.nft-header p{color:var(--text2);margin-top:4px}
+.nft-header-actions{display:flex;gap:12px;align-items:center}
+.search-box{display:flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px}
+.search-box input{background:none;border:none;color:var(--text);outline:none;width:200px}
+.search-box svg{color:var(--text2);flex-shrink:0}
+.nft-filters{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.filter-btn{padding:6px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:20px;color:var(--text2);cursor:pointer;font-size:14px;transition:.2s}
+.filter-btn.active,.filter-btn:hover{background:rgba(0,255,136,.1);color:var(--green);border-color:var(--green)}
+.section-header{display:flex;justify-content:space-between;align-items:center;margin:24px 0 16px}
+.section-header h2{font-size:20px}
+.collections-bar{display:flex;gap:16px;overflow-x:auto;padding-bottom:12px;margin-bottom:24px}
+.collection-card{flex:0 0 200px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;cursor:pointer;transition:.2s}
+.collection-card:hover{border-color:var(--green);transform:translateY(-2px)}
+.collection-avatar{width:56px;height:56px;border-radius:50%;margin:0 auto 8px;overflow:hidden}
+.collection-avatar img,.collection-avatar div{width:100%;height:100%;object-fit:cover}
+.collection-card h4{font-size:14px;margin-bottom:4px}
+.collection-card .floor{font-size:12px;color:var(--text2)}
+.nft-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.nft-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:.3s}
+.nft-card:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,204,255,.1)}
+.nft-image{aspect-ratio:1;overflow:hidden;position:relative}
+.nft-image div{width:100%;height:100%}
+.nft-info{padding:14px}
+.nft-collection-name{font-size:11px;color:var(--cyan);text-transform:uppercase;letter-spacing:1px}
+.nft-name{font-size:15px;font-weight:600;margin:4px 0}
+.nft-price-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.nft-price{font-size:14px;font-weight:600;color:var(--green)}
+.nft-likes{font-size:12px;color:var(--text2)}
+
+/* ========== DAO ========== */
+.dao-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:16px}
+.dao-header h1{font-size:28px}
+.dao-header p{color:var(--text2);margin-top:4px}
+.dao-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.dao-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px;cursor:pointer;transition:.2s}
+.dao-card:hover{border-color:var(--purple);transform:translateY(-2px)}
+.dao-card-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.dao-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px}
+.dao-card h3{font-size:18px}
+.dao-card .dao-desc{color:var(--text2);font-size:14px;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dao-stats{display:flex;gap:16px}
+.dao-stat{text-align:center}
+.dao-stat .val{font-size:16px;font-weight:600}
+.dao-stat .lbl{font-size:11px;color:var(--text2);text-transform:uppercase}
+.dao-detail{position:relative}
+.back-btn{background:none;border:none;color:var(--cyan);cursor:pointer;font-size:15px;margin-bottom:16px;padding:0}
+.dao-detail-header{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:24px}
+.dao-detail-body{display:grid;grid-template-columns:1fr 340px;gap:24px}
+.dao-proposals .proposal{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:12px}
+.proposal-header{display:flex;justify-content:space-between;align-items:start;margin-bottom:8px}
+.proposal-status{font-size:12px;padding:3px 10px;border-radius:12px;font-weight:600}
+.proposal-status.active{background:rgba(0,255,136,.15);color:var(--green)}
+.proposal-status.passed{background:rgba(139,92,246,.15);color:var(--purple)}
+.proposal-status.rejected{background:rgba(255,68,102,.15);color:var(--red)}
+.proposal h4{font-size:16px;margin-bottom:4px}
+.proposal p{color:var(--text2);font-size:14px;margin-bottom:12px}
+.vote-bars{margin:12px 0}
+.vote-bar-row{margin-bottom:8px}
+.vote-bar-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
+.vote-bar{height:6px;background:var(--bg4);border-radius:3px;overflow:hidden}
+.vote-bar-fill{height:100%;border-radius:3px;transition:width .5s}
+.vote-bar-fill.for{background:var(--green)}
+.vote-bar-fill.against{background:var(--red)}
+.vote-bar-fill.abstain{background:var(--text3)}
+.proposal-actions{display:flex;gap:8px;margin-top:12px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.card h3{font-size:16px;margin-bottom:12px}
+.treasury-amount{font-size:28px;font-weight:700;color:var(--green);margin-bottom:8px}
+.treasury-tokens{font-size:13px;color:var(--text2)}
+.member-list{display:flex;flex-direction:column;gap:8px}
+.member{display:flex;align-items:center;gap:10px;font-size:14px}
+.member-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+.member-addr{color:var(--text2);font-size:12px}
+
+/* ========== STAKING ========== */
+.staking-header{margin-bottom:24px}
+.staking-header h1{font-size:28px}
+.staking-header p{color:var(--text2);margin-top:4px}
+.staking-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center}
+.stat-label{display:block;font-size:13px;color:var(--text2);margin-bottom:8px}
+.stat-value{display:block;font-size:24px;font-weight:700}
+.staking-pools{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:16px}
+.pool-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:.2s}
+.pool-card:hover{border-color:var(--green)}
+.pool-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.pool-tokens{display:flex;align-items:center;gap:8px}
+.pool-token-icons{display:flex}
+.pool-token-icons span{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#000;margin-right:-8px;border:2px solid var(--bg2)}
+.pool-apy{text-align:right}
+.pool-apy .apy-val{font-size:24px;font-weight:700;color:var(--green)}
+.pool-apy .apy-label{font-size:12px;color:var(--text2)}
+.pool-details{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.pool-detail{background:var(--bg);border-radius:var(--radius-sm);padding:12px}
+.pool-detail .pdl{font-size:12px;color:var(--text2)}
+.pool-detail .pdv{font-size:16px;font-weight:600;margin-top:4px}
+.pool-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pool-input{display:flex;gap:8px;margin-bottom:12px}
+.pool-input input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;color:var(--text);outline:none}
+.pool-input input:focus{border-color:var(--green)}
+.calculator{background:var(--bg);border-radius:var(--radius-sm);padding:12px;margin-bottom:16px;font-size:13px}
+.calculator .calc-row{display:flex;justify-content:space-between;padding:4px 0;color:var(--text2)}
+.calculator .calc-row span:last-child{color:var(--text);font-weight:500}
+
+/* ========== PORTFOLIO ========== */
+.portfolio-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:16px}
+.portfolio-header h1{font-size:28px}
+.portfolio-total .label{display:block;font-size:13px;color:var(--text2)}
+.portfolio-total .value{font-size:32px;font-weight:700}
+.portfolio-total .change{font-size:14px}
+.chart-container{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:32px}
+.chart-tabs{display:flex;gap:4px;margin-bottom:16px}
+.chart-tab{padding:6px 14px;background:none;border:1px solid var(--border);border-radius:6px;color:var(--text2);cursor:pointer;font-size:13px}
+.chart-tab.active{background:var(--bg3);color:var(--text);border-color:var(--green)}
+.token-table{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:32px}
+.table-header{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 80px;gap:12px;padding:12px 20px;background:var(--bg3);font-size:13px;color:var(--text2);font-weight:600}
+.token-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 80px;gap:12px;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.04);align-items:center;transition:.1s}
+.token-row:hover{background:rgba(255,255,255,.02)}
+.token-row:last-child{border-bottom:none}
+.token-info{display:flex;align-items:center;gap:10px}
+.token-info-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#000;flex-shrink:0}
+.token-info-name{font-weight:600}
+.token-info-symbol{color:var(--text2);font-size:13px}
+.tx-list{display:flex;flex-direction:column;gap:8px}
+.tx-item{display:grid;grid-template-columns:auto 1fr auto auto;gap:16px;align-items:center;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 20px}
+.tx-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px}
+.tx-info .tx-type{font-weight:600;font-size:14px}
+.tx-info .tx-detail{font-size:13px;color:var(--text2)}
+.tx-amount{font-weight:600;text-align:right}
+.tx-time{font-size:13px;color:var(--text2);text-align:right}
+
+/* ========== MODALS ========== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:16px;width:100%;max-width:460px;max-height:90vh;overflow-y:auto;animation:modalIn .2s}
+.modal-sm{max-width:380px}
+.modal-lg{max-width:640px}
+@keyframes modalIn{from{opacity:0;transform:scale(.95)translateY(10px)}to{opacity:1;transform:none}}
+.modal-header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--border)}
+.modal-header h3{font-size:18px}
+.modal-close{background:none;border:none;color:var(--text2);font-size:24px;cursor:pointer;line-height:1}
+.modal-close:hover{color:var(--text)}
+.modal-footer-text{text-align:center;padding:16px 24px;font-size:12px;color:var(--text3)}
+
+/* Wallet Options */
+.wallet-options{padding:16px}
+.wallet-option{display:flex;align-items:center;gap:14px;width:100%;padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:.2s;text-align:left;margin-bottom:8px;color:var(--text)}
+.wallet-option:hover{border-color:var(--green);background:rgba(0,255,136,.04)}
+.wallet-option img{width:40px;height:40px;border-radius:8px}
+.wallet-option strong{display:block;font-size:15px}
+.wallet-option span{font-size:12px;color:var(--text2)}
+
+/* Token List Modal */
+.token-search{padding:16px 24px 0}
+.token-search input{width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);outline:none}
+.token-search input:focus{border-color:var(--green)}
+.token-list{padding:8px 16px 16px;max-height:360px;overflow-y:auto}
+.token-list-item{display:flex;align-items:center;gap:12px;padding:10px 8px;border-radius:var(--radius-sm);cursor:pointer;transition:.1s}
+.token-list-item:hover{background:rgba(255,255,255,.04)}
+.token-list-item .tl-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#000;flex-shrink:0}
+.token-list-item .tl-name{font-weight:600;font-size:15px}
+.token-list-item .tl-symbol{font-size:13px;color:var(--text2)}
+.token-list-item .tl-balance{margin-left:auto;font-size:14px;color:var(--text2)}
+
+/* Slippage */
+.slippage-options{padding:20px 24px}
+.slippage-options label{display:block;font-size:14px;color:var(--text2);margin-bottom:8px}
+.slippage-btns{display:flex;gap:8px}
+.slip-btn{padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;transition:.2s}
+.slip-btn.active,.slip-btn:hover{border-color:var(--green);color:var(--green)}
+.slip-custom{display:flex;align-items:center;gap:4px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 10px}
+.slip-custom input{width:60px;background:none;border:none;color:var(--text);outline:none;padding:8px 0}
+.slip-custom span{color:var(--text2)}
+.deadline-input{display:flex;align-items:center;gap:8px}
+.deadline-input input{width:80px;padding:8px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);outline:none}
+.deadline-input span{color:var(--text2);font-size:14px}
+
+/* Mint Form */
+.mint-form{padding:20px 24px}
+.upload-area{border:2px dashed var(--border);border-radius:var(--radius);padding:40px 20px;text-align:center;cursor:pointer;transition:.2s;margin-bottom:16px}
+.upload-area:hover{border-color:var(--green)}
+.upload-area p{margin-top:12px;color:var(--text)}
+.upload-area span{font-size:12px;color:var(--text3)}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:14px;color:var(--text2);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);outline:none;resize:vertical}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--green)}
+.form-group select{cursor:pointer}
+.form-row{display:flex;gap:12px}
+.form-row .form-group{flex:1}
+
+/* DAO Wizard */
+.dao-wizard{padding:24px}
+.wizard-steps{display:flex;gap:4px;margin-bottom:24px}
+.wizard-step{flex:1;display:flex;align-items:center;gap:8px;padding:10px;background:var(--bg);border-radius:var(--radius-sm);font-size:13px;color:var(--text3)}
+.wizard-step span{width:24px;height:24px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.wizard-step.active{color:var(--green)}
+.wizard-step.active span{background:var(--green);color:#000}
+.wizard-panel{display:none}.wizard-panel.active{display:block}
+.review-summary{background:var(--bg);border-radius:var(--radius-sm);padding:16px;margin-bottom:16px}
+.review-item{display:flex;justify-content:space-between;padding:6px 0;font-size:14px}
+.review-item span:first-child{color:var(--text2)}
+
+/* NFT Detail */
+.nft-detail-body{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.nft-detail-image{aspect-ratio:1;border-radius:var(--radius);overflow:hidden}
+.nft-detail-image div{width:100%;height:100%}
+.nft-detail-info{display:flex;flex-direction:column;gap:12px}
+.nft-detail-price{font-size:24px;font-weight:700;color:var(--green)}
+.nft-detail-creator{font-size:14px;color:var(--text2)}
+.nft-detail-desc{color:var(--text2);font-size:14px;line-height:1.6}
+.nft-detail-actions{display:flex;gap:8px;margin-top:auto}
+.nft-bid-input{display:flex;gap:8px}
+.nft-bid-input input{flex:1;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);outline:none}
+
+/* Vote Modal */
+.vote-options{padding:24px;display:flex;flex-direction:column;gap:8px}
+.vote-btn{padding:14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg);color:var(--text);font-size:16px;font-weight:600;cursor:pointer;transition:.2s}
+.vote-btn:hover{transform:translateY(-1px)}
+.vote-for:hover{border-color:var(--green);color:var(--green)}
+.vote-against:hover{border-color:var(--red);color:var(--red)}
+.vote-abstain:hover{border-color:var(--text2);color:var(--text)}
+
+/* Toast */
+.toast-container{position:fixed;bottom:24px;right:24px;z-index:300;display:flex;flex-direction:column;gap:8px}
+.toast{padding:14px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:14px;animation:toastIn .3s;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.toast.success{border-color:var(--green)}
+.toast.error{border-color:var(--red)}
+@keyframes toastIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:1024px){
+  .exchange-layout{grid-template-columns:1fr}
+  .dao-detail-body{grid-template-columns:1fr}
+  .nft-detail-body{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .mobile-menu{display:flex}
+  .staking-stats{grid-template-columns:1fr}
+  .table-header,.token-row{grid-template-columns:2fr 1fr 1fr;font-size:13px}
+  .table-header span:nth-child(4),.table-header span:nth-child(5),
+  .token-row span:nth-child(4),.token-row span:nth-child(5){display:none}
+  .staking-pools{grid-template-columns:1fr}
+  .nft-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .dao-grid{grid-template-columns:1fr}
+  .exchange-layout{grid-template-columns:1fr}
+  .portfolio-header{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){
+  .nav-inner{padding:0 12px}
+  .tab-content{padding:16px 12px}
+  .btn-connect span{display:none}
+}

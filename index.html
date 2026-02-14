@@ -3,227 +3,470 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WAGMI — We're All Gonna Make It</title>
-<meta name="description" content="WAGMI — We're All Gonna Make It. Building the future, together.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-  
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  
-  :root {
-    --bg: #0a0a0f;
-    --surface: #12121a;
-    --border: #1e1e2e;
-    --text: #e8e8f0;
-    --dim: #8888aa;
-    --accent: #00ff88;
-    --accent2: #00ccff;
-    --glow: rgba(0, 255, 136, 0.15);
-  }
-  
-  body {
-    font-family: 'Space Grotesk', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  
-  /* Animated gradient background */
-  .bg-effect {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: 
-      radial-gradient(ellipse at 20% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(0, 204, 255, 0.04) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 80%, rgba(136, 0, 255, 0.03) 0%, transparent 50%);
-    animation: bgPulse 8s ease-in-out infinite alternate;
-    z-index: 0;
-  }
-  
-  @keyframes bgPulse {
-    0% { opacity: 0.6; }
-    100% { opacity: 1; }
-  }
-  
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .logo {
-    font-size: clamp(4rem, 12vw, 8rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent) 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 3s linear infinite;
-    margin-bottom: 0.5rem;
-  }
-  
-  @keyframes shimmer {
-    0% { background-position: 0% center; }
-    100% { background-position: 200% center; }
-  }
-  
-  .tagline {
-    font-size: clamp(1.1rem, 3vw, 1.5rem);
-    font-weight: 300;
-    color: var(--dim);
-    margin-bottom: 3rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-  
-  .manifesto {
-    max-width: 600px;
-    margin-bottom: 3rem;
-  }
-  
-  .manifesto p {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: var(--dim);
-    margin-bottom: 1.5rem;
-  }
-  
-  .manifesto strong {
-    color: var(--accent);
-    font-weight: 500;
-  }
-  
-  .stats {
-    display: flex;
-    gap: 3rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .stat {
-    text-align: center;
-  }
-  
-  .stat-value {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent);
-    display: block;
-  }
-  
-  .stat-label {
-    font-size: 0.8rem;
-    color: var(--dim);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-top: 0.3rem;
-  }
-  
-  .cta {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .cta::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%; right: 100%; bottom: 0;
-    background: var(--accent);
-    transition: all 0.3s ease;
-    z-index: -1;
-  }
-  
-  .cta:hover {
-    color: var(--bg);
-  }
-  
-  .cta:hover::before {
-    left: 0; right: 0;
-  }
-  
-  .footer {
-    position: absolute;
-    bottom: 2rem;
-    font-size: 0.8rem;
-    color: var(--dim);
-    letter-spacing: 0.1em;
-  }
-  
-  .pulse-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    margin-right: 0.5rem;
-    animation: pulse 2s ease-in-out infinite;
-    vertical-align: middle;
-  }
-  
-  @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-    50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(0, 255, 136, 0); }
-  }
-  
-  @media (max-width: 600px) {
-    .stats { gap: 1.5rem; }
-    .stat-value { font-size: 1.5rem; }
-    .container { padding: 0 1.5rem; }
-  }
-</style>
+<title>WAGMI — Decentralized Exchange, NFTs & DAOs on Expanse</title>
+<meta name="description" content="WAGMI is the premier decentralized platform on Expanse blockchain. Swap tokens, trade NFTs, create DAOs, and stake your assets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.umd.min.js" defer></script>
 </head>
 <body>
-<div class="bg-effect"></div>
-<div class="container">
-  <div class="logo">WAGMI</div>
-  <div class="tagline">We're All Gonna Make It</div>
-  
-  <div class="manifesto">
-    <p>Born in the trenches of crypto Twitter. Forged in bull markets and bear markets alike. <strong>WAGMI</strong> isn't just a meme — it's a mindset.</p>
-    <p>Building something <strong>real</strong>. Something that lasts beyond the hype cycles. The future belongs to the builders, not the spectators.</p>
-  </div>
-  
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-value">∞</span>
-      <div class="stat-label">Conviction</div>
-    </div>
-    <div class="stat">
-      <span class="stat-value">24/7</span>
-      <div class="stat-label">Building</div>
-    </div>
-    <div class="stat">
-      <span class="stat-value">🤝</span>
-      <div class="stat-label">Together</div>
-    </div>
-  </div>
-  
-  <a href="mailto:danebennettwalter@gmail.com?subject=WAGMI" class="cta">Get In Touch</a>
-  
-  <div class="footer"><span class="pulse-dot"></span> wagmi.io</div>
+<!-- Background Effects -->
+<div class="bg-effects">
+  <div class="gradient-orb orb-1"></div>
+  <div class="gradient-orb orb-2"></div>
+  <div class="gradient-orb orb-3"></div>
 </div>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo" onclick="switchTab('exchange')">
+      <img src="images/expanse-logo.jpg" alt="WAGMI" class="logo-img">
+      <span class="logo-text">WAGMI</span>
+      <span class="logo-badge">BETA</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#" class="nav-link active" data-tab="exchange">Exchange</a>
+      <a href="#" class="nav-link" data-tab="nfts">NFTs</a>
+      <a href="#" class="nav-link" data-tab="daos">DAOs</a>
+      <a href="#" class="nav-link" data-tab="staking">Staking</a>
+      <a href="#" class="nav-link" data-tab="portfolio">Portfolio</a>
+    </div>
+    <div class="nav-right">
+      <div class="network-badge" onclick="openModal('networkModal')">
+        <span class="network-dot"></span>
+        Expanse
+      </div>
+      <button class="btn-connect" onclick="openModal('walletModal')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M16 14h.01"/><path d="M2 10h20"/></svg>
+        Connect Wallet
+      </button>
+      <button class="mobile-menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#" class="mobile-nav-link active" data-tab="exchange">Exchange</a>
+  <a href="#" class="mobile-nav-link" data-tab="nfts">NFTs</a>
+  <a href="#" class="mobile-nav-link" data-tab="daos">DAOs</a>
+  <a href="#" class="mobile-nav-link" data-tab="staking">Staking</a>
+  <a href="#" class="mobile-nav-link" data-tab="portfolio">Portfolio</a>
+</div>
+
+<!-- ==================== EXCHANGE TAB ==================== -->
+<main class="tab-content active" id="tab-exchange">
+  <div class="exchange-layout">
+    <!-- Swap Card -->
+    <div class="swap-container">
+      <div class="swap-tabs">
+        <button class="swap-tab active" onclick="switchSwapMode('swap')">Swap</button>
+        <button class="swap-tab" onclick="switchSwapMode('liquidity')">Liquidity</button>
+      </div>
+
+      <!-- Swap Panel -->
+      <div class="swap-panel active" id="swapPanel">
+        <div class="swap-settings">
+          <span>Slippage: <strong id="slippageVal">0.5%</strong></span>
+          <button class="icon-btn" onclick="openModal('slippageModal')" title="Settings">⚙️</button>
+        </div>
+        <div class="swap-input-group">
+          <label>You Pay</label>
+          <div class="swap-input-row">
+            <input type="number" placeholder="0.0" id="swapFromAmount" oninput="calcSwap()">
+            <button class="token-select" onclick="openTokenSelect('from')">
+              <img src="" alt="" class="token-icon" id="fromTokenIcon">
+              <span id="fromTokenName">EXP</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+          </div>
+          <div class="swap-balance">Balance: <span id="fromBalance">12,450.00</span> <button class="max-btn" onclick="setMax('from')">MAX</button></div>
+        </div>
+        <button class="swap-arrow" onclick="flipTokens()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+        </button>
+        <div class="swap-input-group">
+          <label>You Receive</label>
+          <div class="swap-input-row">
+            <input type="number" placeholder="0.0" id="swapToAmount" readonly>
+            <button class="token-select" onclick="openTokenSelect('to')">
+              <img src="" alt="" class="token-icon" id="toTokenIcon">
+              <span id="toTokenName">WAGMI</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+          </div>
+          <div class="swap-balance">Balance: <span id="toBalance">85,200.00</span></div>
+        </div>
+        <div class="swap-details" id="swapDetails" style="display:none">
+          <div class="detail-row"><span>Rate</span><span id="swapRate">—</span></div>
+          <div class="detail-row"><span>Price Impact</span><span id="priceImpact" class="green">< 0.01%</span></div>
+          <div class="detail-row"><span>Min. Received</span><span id="minReceived">—</span></div>
+          <div class="detail-row"><span>Network Fee</span><span>~0.003 EXP</span></div>
+        </div>
+        <button class="btn-primary btn-full" onclick="openModal('walletModal')">Connect Wallet to Swap</button>
+      </div>
+
+      <!-- Liquidity Panel -->
+      <div class="swap-panel" id="liquidityPanel">
+        <div class="liq-tabs">
+          <button class="liq-tab active" onclick="switchLiqMode('add')">Add</button>
+          <button class="liq-tab" onclick="switchLiqMode('remove')">Remove</button>
+        </div>
+        <div id="liqAddPanel">
+          <div class="swap-input-group">
+            <label>Token A</label>
+            <div class="swap-input-row">
+              <input type="number" placeholder="0.0">
+              <button class="token-select"><span>EXP</span></button>
+            </div>
+          </div>
+          <div class="plus-icon">+</div>
+          <div class="swap-input-group">
+            <label>Token B</label>
+            <div class="swap-input-row">
+              <input type="number" placeholder="0.0">
+              <button class="token-select"><span>WAGMI</span></button>
+            </div>
+          </div>
+          <div class="liq-info">
+            <div class="detail-row"><span>Pool Share</span><span>0.04%</span></div>
+            <div class="detail-row"><span>EXP per WAGMI</span><span>0.1462</span></div>
+            <div class="detail-row"><span>WAGMI per EXP</span><span>6.84</span></div>
+          </div>
+          <button class="btn-primary btn-full" onclick="openModal('walletModal')">Connect Wallet</button>
+        </div>
+        <div id="liqRemovePanel" style="display:none">
+          <div class="range-container">
+            <label>Amount to Remove</label>
+            <input type="range" min="0" max="100" value="50" class="range-slider" oninput="this.nextElementSibling.textContent=this.value+'%'">
+            <span class="range-val">50%</span>
+            <div class="range-presets">
+              <button onclick="this.parentElement.previousElementSibling.previousElementSibling.value=25">25%</button>
+              <button onclick="this.parentElement.previousElementSibling.previousElementSibling.value=50">50%</button>
+              <button onclick="this.parentElement.previousElementSibling.previousElementSibling.value=75">75%</button>
+              <button onclick="this.parentElement.previousElementSibling.previousElementSibling.value=100">100%</button>
+            </div>
+          </div>
+          <button class="btn-primary btn-full" onclick="openModal('walletModal')">Connect Wallet</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Market Sidebar -->
+    <div class="market-sidebar">
+      <h3>Markets</h3>
+      <div class="market-list" id="marketList"></div>
+    </div>
+  </div>
+</main>
+
+<!-- ==================== NFT TAB ==================== -->
+<main class="tab-content" id="tab-nfts">
+  <div class="nft-header">
+    <div>
+      <h1>NFT Marketplace</h1>
+      <p>Discover, collect, and trade NFTs on Expanse</p>
+    </div>
+    <div class="nft-header-actions">
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" placeholder="Search collections..." oninput="filterNFTs(this.value)">
+      </div>
+      <button class="btn-primary" onclick="openModal('mintModal')">+ Create</button>
+    </div>
+  </div>
+  <div class="nft-filters">
+    <button class="filter-btn active" onclick="filterNFTCat(this,'all')">All</button>
+    <button class="filter-btn" onclick="filterNFTCat(this,'art')">Art</button>
+    <button class="filter-btn" onclick="filterNFTCat(this,'collectibles')">Collectibles</button>
+    <button class="filter-btn" onclick="filterNFTCat(this,'gaming')">Gaming</button>
+    <button class="filter-btn" onclick="filterNFTCat(this,'music')">Music</button>
+  </div>
+  <!-- Top Collections -->
+  <div class="section-header">
+    <h2>🔥 Trending Collections</h2>
+  </div>
+  <div class="collections-bar" id="collectionsBar"></div>
+  <!-- NFT Grid -->
+  <div class="nft-grid" id="nftGrid"></div>
+</main>
+
+<!-- ==================== DAO TAB ==================== -->
+<main class="tab-content" id="tab-daos">
+  <div class="dao-header">
+    <div>
+      <h1>Governance</h1>
+      <p>Create and participate in decentralized organizations</p>
+    </div>
+    <button class="btn-primary" onclick="openModal('createDaoModal')">+ Create DAO</button>
+  </div>
+  <div class="dao-grid" id="daoGrid"></div>
+  <!-- DAO Detail (hidden by default) -->
+  <div class="dao-detail" id="daoDetail" style="display:none">
+    <button class="back-btn" onclick="closeDaoDetail()">← Back to DAOs</button>
+    <div class="dao-detail-header" id="daoDetailHeader"></div>
+    <div class="dao-detail-body">
+      <div class="dao-proposals" id="daoProposals"></div>
+      <div class="dao-sidebar">
+        <div class="card">
+          <h3>Treasury</h3>
+          <div class="treasury-amount" id="daoTreasury">—</div>
+          <div class="treasury-tokens" id="daoTreasuryTokens"></div>
+        </div>
+        <div class="card">
+          <h3>Members</h3>
+          <div class="member-list" id="daoMembers"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ==================== STAKING TAB ==================== -->
+<main class="tab-content" id="tab-staking">
+  <div class="staking-header">
+    <h1>Staking</h1>
+    <p>Earn rewards by staking your tokens</p>
+  </div>
+  <div class="staking-stats">
+    <div class="stat-card">
+      <span class="stat-label">Total Value Locked</span>
+      <span class="stat-value">$4,285,930</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Total Stakers</span>
+      <span class="stat-value">2,847</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Avg APY</span>
+      <span class="stat-value green">18.4%</span>
+    </div>
+  </div>
+  <div class="staking-pools" id="stakingPools"></div>
+</main>
+
+<!-- ==================== PORTFOLIO TAB ==================== -->
+<main class="tab-content" id="tab-portfolio">
+  <div class="portfolio-header">
+    <h1>Portfolio</h1>
+    <div class="portfolio-total">
+      <span class="label">Total Value</span>
+      <span class="value">$24,587.42</span>
+      <span class="change green">+$1,245.30 (5.3%) ↑</span>
+    </div>
+  </div>
+  <!-- Chart -->
+  <div class="chart-container">
+    <div class="chart-tabs">
+      <button class="chart-tab active">1D</button>
+      <button class="chart-tab">1W</button>
+      <button class="chart-tab">1M</button>
+      <button class="chart-tab">1Y</button>
+      <button class="chart-tab">All</button>
+    </div>
+    <canvas id="portfolioChart" height="200"></canvas>
+  </div>
+  <!-- Token Balances -->
+  <div class="section-header"><h2>Token Balances</h2></div>
+  <div class="token-table">
+    <div class="table-header">
+      <span>Asset</span><span>Balance</span><span>Price</span><span>Value</span><span>24h</span>
+    </div>
+    <div id="tokenBalances"></div>
+  </div>
+  <!-- Transaction History -->
+  <div class="section-header"><h2>Recent Transactions</h2></div>
+  <div class="tx-list" id="txList"></div>
+</main>
+
+<!-- ==================== MODALS ==================== -->
+<!-- Wallet Modal -->
+<div class="modal-overlay" id="walletModal" onclick="closeModalOverlay(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Connect Wallet</h3>
+      <button class="modal-close" onclick="closeModal('walletModal')">×</button>
+    </div>
+    <div class="wallet-options">
+      <button class="wallet-option" onclick="connectWallet('metamask')">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect fill='%23f6851b' width='40' height='40' rx='8'/%3E%3Cpath d='M30 10l-8 6 1.5-3.5z' fill='%23e2761b' stroke='%23e2761b'/%3E%3C/svg%3E" alt="MetaMask">
+        <div><strong>MetaMask</strong><span>Connect using browser extension</span></div>
+      </button>
+      <button class="wallet-option" onclick="connectWallet('walletconnect')">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect fill='%233B99FC' width='40' height='40' rx='8'/%3E%3Cpath d='M12 16c4.4-4.4 11.6-4.4 16 0l.5.5-2 2-.5-.5c-3-3-8-3-11 0l-.6.5-2-2z' fill='white'/%3E%3C/svg%3E" alt="WalletConnect">
+        <div><strong>WalletConnect</strong><span>Scan with your mobile wallet</span></div>
+      </button>
+      <button class="wallet-option" onclick="connectWallet('coinbase')">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect fill='%230052FF' width='40' height='40' rx='8'/%3E%3Ccircle cx='20' cy='20' r='10' fill='white'/%3E%3Crect x='16' y='16' width='8' height='8' rx='1' fill='%230052FF'/%3E%3C/svg%3E" alt="Coinbase">
+        <div><strong>Coinbase Wallet</strong><span>Connect using Coinbase</span></div>
+      </button>
+      <button class="wallet-option" onclick="connectWallet('trust')">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect fill='%230500FF' width='40' height='40' rx='8'/%3E%3Cpath d='M20 8c0 0 10 4 10 14s-10 12-10 12-10-2-10-12S20 8 20 8z' fill='white' fill-opacity='0.9'/%3E%3C/svg%3E" alt="Trust">
+        <div><strong>Trust Wallet</strong><span>Connect using Trust</span></div>
+      </button>
+    </div>
+    <p class="modal-footer-text">By connecting, you agree to the <a href="#">Terms of Service</a></p>
+  </div>
+</div>
+
+<!-- Token Select Modal -->
+<div class="modal-overlay" id="tokenSelectModal" onclick="closeModalOverlay(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Select Token</h3>
+      <button class="modal-close" onclick="closeModal('tokenSelectModal')">×</button>
+    </div>
+    <div class="token-search">
+      <input type="text" placeholder="Search by name or address..." id="tokenSearchInput" oninput="filterTokenList(this.value)">
+    </div>
+    <div class="token-list" id="tokenListModal"></div>
+  </div>
+</div>
+
+<!-- Slippage Modal -->
+<div class="modal-overlay" id="slippageModal" onclick="closeModalOverlay(event)">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h3>Transaction Settings</h3>
+      <button class="modal-close" onclick="closeModal('slippageModal')">×</button>
+    </div>
+    <div class="slippage-options">
+      <label>Slippage Tolerance</label>
+      <div class="slippage-btns">
+        <button class="slip-btn" onclick="setSlippage(0.1)">0.1%</button>
+        <button class="slip-btn active" onclick="setSlippage(0.5)">0.5%</button>
+        <button class="slip-btn" onclick="setSlippage(1.0)">1.0%</button>
+        <div class="slip-custom">
+          <input type="number" placeholder="Custom" id="customSlippage" oninput="setSlippage(this.value)">
+          <span>%</span>
+        </div>
+      </div>
+      <label style="margin-top:16px">Transaction Deadline</label>
+      <div class="deadline-input">
+        <input type="number" value="30" min="1"> <span>minutes</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mint NFT Modal -->
+<div class="modal-overlay" id="mintModal" onclick="closeModalOverlay(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Create NFT</h3>
+      <button class="modal-close" onclick="closeModal('mintModal')">×</button>
+    </div>
+    <div class="mint-form">
+      <div class="upload-area" onclick="document.getElementById('nftFileInput').click()">
+        <input type="file" id="nftFileInput" hidden accept="image/*,video/*,audio/*">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><path d="M12 16V4m0 0l-4 4m4-4 4 4"/><path d="M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/></svg>
+        <p>Drag & drop or click to upload</p>
+        <span>PNG, JPG, GIF, MP4 — Max 100MB</span>
+      </div>
+      <div class="form-group"><label>Name</label><input type="text" placeholder="NFT Name"></div>
+      <div class="form-group"><label>Description</label><textarea placeholder="Describe your NFT..." rows="3"></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Price (EXP)</label><input type="number" placeholder="0.0"></div>
+        <div class="form-group"><label>Royalty %</label><input type="number" placeholder="10" value="10"></div>
+      </div>
+      <div class="form-group">
+        <label>Collection</label>
+        <select><option>Create New</option><option>Expanse Genesis</option><option>Cosmic Drift</option></select>
+      </div>
+      <button class="btn-primary btn-full" onclick="openModal('walletModal')">Connect Wallet to Mint</button>
+    </div>
+  </div>
+</div>
+
+<!-- Create DAO Modal -->
+<div class="modal-overlay" id="createDaoModal" onclick="closeModalOverlay(event)">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3>Create a DAO</h3>
+      <button class="modal-close" onclick="closeModal('createDaoModal')">×</button>
+    </div>
+    <div class="dao-wizard">
+      <div class="wizard-steps">
+        <div class="wizard-step active" data-step="1"><span>1</span> Basics</div>
+        <div class="wizard-step" data-step="2"><span>2</span> Governance</div>
+        <div class="wizard-step" data-step="3"><span>3</span> Token</div>
+        <div class="wizard-step" data-step="4"><span>4</span> Review</div>
+      </div>
+      <div class="wizard-panel active" id="wizStep1">
+        <div class="form-group"><label>DAO Name</label><input type="text" placeholder="My DAO"></div>
+        <div class="form-group"><label>Description</label><textarea rows="3" placeholder="What is this DAO about?"></textarea></div>
+        <div class="form-group"><label>Category</label>
+          <select><option>Protocol</option><option>Investment</option><option>Social</option><option>Grants</option></select>
+        </div>
+        <button class="btn-primary" onclick="wizardNext(2)">Next →</button>
+      </div>
+      <div class="wizard-panel" id="wizStep2">
+        <div class="form-group"><label>Voting Duration (days)</label><input type="number" value="7"></div>
+        <div class="form-group"><label>Quorum (%)</label><input type="number" value="51" min="1" max="100"></div>
+        <div class="form-group"><label>Proposal Threshold</label><input type="number" value="100" placeholder="Min tokens to propose"></div>
+        <div class="form-row">
+          <button class="btn-secondary" onclick="wizardNext(1)">← Back</button>
+          <button class="btn-primary" onclick="wizardNext(3)">Next →</button>
+        </div>
+      </div>
+      <div class="wizard-panel" id="wizStep3">
+        <div class="form-group"><label>Token Name</label><input type="text" placeholder="My Token"></div>
+        <div class="form-group"><label>Token Symbol</label><input type="text" placeholder="MYT"></div>
+        <div class="form-group"><label>Initial Supply</label><input type="number" value="1000000"></div>
+        <div class="form-row">
+          <button class="btn-secondary" onclick="wizardNext(2)">← Back</button>
+          <button class="btn-primary" onclick="wizardNext(4)">Next →</button>
+        </div>
+      </div>
+      <div class="wizard-panel" id="wizStep4">
+        <div class="review-summary">
+          <p>Review your DAO configuration and deploy.</p>
+          <div class="review-item"><span>Name:</span><span>—</span></div>
+          <div class="review-item"><span>Voting:</span><span>7 days, 51% quorum</span></div>
+          <div class="review-item"><span>Token:</span><span>—</span></div>
+        </div>
+        <div class="form-row">
+          <button class="btn-secondary" onclick="wizardNext(3)">← Back</button>
+          <button class="btn-primary" onclick="openModal('walletModal')">Deploy DAO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NFT Detail Modal -->
+<div class="modal-overlay" id="nftDetailModal" onclick="closeModalOverlay(event)">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3 id="nftDetailTitle">—</h3>
+      <button class="modal-close" onclick="closeModal('nftDetailModal')">×</button>
+    </div>
+    <div class="nft-detail-body" id="nftDetailBody"></div>
+  </div>
+</div>
+
+<!-- Vote Modal -->
+<div class="modal-overlay" id="voteModal" onclick="closeModalOverlay(event)">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h3>Cast Vote</h3>
+      <button class="modal-close" onclick="closeModal('voteModal')">×</button>
+    </div>
+    <div class="vote-options">
+      <button class="vote-btn vote-for" onclick="castVote('for')">👍 For</button>
+      <button class="vote-btn vote-against" onclick="castVote('against')">👎 Against</button>
+      <button class="vote-btn vote-abstain" onclick="castVote('abstain')">🤷 Abstain</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="app.js"></script>
 </body>
 </html>

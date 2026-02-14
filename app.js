@@ -15,22 +15,63 @@ const CONTRACTS = {
 // Expanse chain config
 const EXPANSE_CHAIN = { chainId: '0x2', name: 'Expanse', rpc: 'https://node.expanse.tech' };
 
-/* ---- Uncomment for live wallet connection ----
 let provider, signer, userAddress;
-async function connectWeb3() {
-  if (!window.ethereum) return alert('Please install MetaMask');
-  provider = new ethers.BrowserProvider(window.ethereum);
-  await provider.send('eth_requestAccounts', []);
-  signer = await provider.getSigner();
-  userAddress = await signer.getAddress();
-  // Try switching to Expanse
+
+async function connectWeb3(type) {
   try {
-    await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: EXPANSE_CHAIN.chainId }] });
-  } catch(e) {
-    await window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: EXPANSE_CHAIN.chainId, chainName: EXPANSE_CHAIN.name, rpcUrls: [EXPANSE_CHAIN.rpc] }] });
+    if (type === 'walletconnect') {
+      // WalletConnect v2 via EthereumProvider
+      if (!window.EthereumProvider) {
+        showToast('Loading WalletConnect...');
+        return;
+      }
+      const wcProvider = await window.EthereumProvider.init({
+        projectId: 'e899c82be21d4acca2c8aec45e893598',
+        chains: [2], // Expanse chain ID
+        showQrModal: true,
+        optionalChains: [1, 2],
+        rpcMap: {
+          2: 'https://node.expanse.tech',
+          1: 'https://eth.llamarpc.com',
+        }
+      });
+      await wcProvider.enable();
+      provider = new ethers.BrowserProvider(wcProvider);
+      signer = await provider.getSigner();
+      userAddress = await signer.getAddress();
+      onWalletConnected(userAddress);
+    } else {
+      // MetaMask / injected provider
+      if (!window.ethereum) {
+        showToast('No wallet detected. Please install MetaMask or use WalletConnect.');
+        return;
+      }
+      provider = new ethers.BrowserProvider(window.ethereum);
+      await provider.send('eth_requestAccounts', []);
+      signer = await provider.getSigner();
+      userAddress = await signer.getAddress();
+      // Try switching to Expanse
+      try {
+        await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: EXPANSE_CHAIN.chainId }] });
+      } catch(e) {
+        try {
+          await window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: EXPANSE_CHAIN.chainId, chainName: EXPANSE_CHAIN.name, nativeCurrency: { name: 'Expanse', symbol: 'EXP', decimals: 18 }, rpcUrls: [EXPANSE_CHAIN.rpc] }] });
+        } catch(e2) {}
+      }
+      onWalletConnected(userAddress);
+    }
+  } catch(err) {
+    console.error('Wallet connection error:', err);
+    showToast('Connection failed: ' + (err.message || 'User rejected'));
   }
 }
-*/
+
+function onWalletConnected(address) {
+  const short = address.slice(0,6) + '...' + address.slice(-4);
+  document.querySelector('.btn-connect').innerHTML = `<span class="connected-dot"></span>${short}`;
+  document.querySelector('.btn-connect').onclick = () => showToast('Connected: ' + address);
+  showToast('Wallet connected: ' + short);
+}
 
 // ============================================================
 // MOCK DATA
@@ -313,7 +354,11 @@ function renderMarkets() {
 // ============================================================
 function connectWallet(type) {
   closeModal('walletModal');
-  showToast(`Connecting via ${type}... Please install or enable your wallet extension.`);
+  if (type === 'WalletConnect') {
+    connectWeb3('walletconnect');
+  } else {
+    connectWeb3('injected');
+  }
 }
 
 // ============================================================

@@ -8,7 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.umd.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.umd.min.js"></script>
+<script src="https://unpkg.com/@walletconnect/ethereum-provider@2.11.2/dist/index.umd.js"></script>
+<script>window.EthereumProvider = window.EthereumProviderDefault || (window['@walletconnect/ethereum-provider'] && window['@walletconnect/ethereum-provider'].EthereumProvider);</script>
 </head>
 <body>
 <!-- Background Effects -->

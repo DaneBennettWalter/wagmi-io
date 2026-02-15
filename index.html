@@ -23,13 +23,14 @@
 <!-- Navigation -->
 <nav class="navbar">
   <div class="nav-inner">
-    <a href="#" class="logo" onclick="switchTab('exchange')">
+    <a href="#" class="logo" onclick="switchTab('mission')">
       <img src="images/expanse-logo.jpg" alt="WAGMI" class="logo-img">
       <span class="logo-text">WAGMI</span>
       <span class="logo-badge">BETA</span>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="#" class="nav-link active" data-tab="exchange">Exchange</a>
+      <a href="#" class="nav-link active" data-tab="mission">Mission</a>
+      <a href="#" class="nav-link" data-tab="exchange">Exchange</a>
       <a href="#" class="nav-link" data-tab="nfts">NFTs</a>
       <a href="#" class="nav-link" data-tab="daos">DAOs</a>
       <a href="#" class="nav-link" data-tab="staking">Staking</a>
@@ -53,15 +54,169 @@
 
 <!-- Mobile Menu -->
 <div class="mobile-nav" id="mobileNav">
-  <a href="#" class="mobile-nav-link active" data-tab="exchange">Exchange</a>
+  <a href="#" class="mobile-nav-link active" data-tab="mission">Mission</a>
+  <a href="#" class="mobile-nav-link" data-tab="exchange">Exchange</a>
   <a href="#" class="mobile-nav-link" data-tab="nfts">NFTs</a>
   <a href="#" class="mobile-nav-link" data-tab="daos">DAOs</a>
   <a href="#" class="mobile-nav-link" data-tab="staking">Staking</a>
   <a href="#" class="mobile-nav-link" data-tab="portfolio">Portfolio</a>
 </div>
 
+<!-- ==================== MISSION TAB ==================== -->
+<main class="tab-content active" id="tab-mission">
+
+  <!-- Hero -->
+  <section class="mission-hero">
+    <div class="mission-hero-badge">We're All Gonna Make It</div>
+    <h1 class="mission-hero-title">Building the Future,<br><span class="gradient-text">One Human at a Time</span></h1>
+    <p class="mission-hero-sub">WAGMI is an autonomous, decentralized collective focused on research, education, and deployment of technological solutions on the edge of human capabilities — from DeFi to farms, from code to community.</p>
+    <div class="mission-hero-actions">
+      <button class="btn-primary" onclick="switchTab('exchange')">Launch App →</button>
+      <a href="https://dao1.earth" target="_blank" class="btn-secondary">Explore DAO1 ↗</a>
+    </div>
+    <div class="mission-hero-stats">
+      <div class="mh-stat"><span class="mh-val">10+</span><span class="mh-lbl">Verticals</span></div>
+      <div class="mh-stat"><span class="mh-val">2015</span><span class="mh-lbl">Expanse Founded</span></div>
+      <div class="mh-stat"><span class="mh-val">Global</span><span class="mh-lbl">Community</span></div>
+      <div class="mh-stat"><span class="mh-val">DAO</span><span class="mh-lbl">Governed</span></div>
+    </div>
+  </section>
+
+  <!-- In Hoc Signo Vinces -->
+  <section class="mission-quote-block">
+    <blockquote>"We are builders of the future, builders of communities and ideas and vision. If someone ever asks us what we do at WAGMI, our answer should always be: <em>We build communities.</em>"</blockquote>
+    <cite>— Dane Bennett Walter (The_Dude), WAGMI Builders Manual</cite>
+  </section>
+
+  <!-- The Ecosystem -->
+  <section class="mission-section">
+    <h2 class="section-title">The Ecosystem</h2>
+    <p class="section-desc">WAGMI operates within a layered stack — governance, blockchain, tools, and community working together toward real-world impact.</p>
+    <div class="ecosystem-grid">
+      <div class="eco-card">
+        <div class="eco-icon">🏛️</div>
+        <h3>DAO1</h3>
+        <p>Decentralized governance & infrastructure. The constitutional framework that gives every human a voice.</p>
+        <a href="https://dao1.earth" target="_blank" class="eco-link">dao1.earth ↗</a>
+      </div>
+      <div class="eco-card">
+        <div class="eco-icon">⛓️</div>
+        <h3>Expanse</h3>
+        <p>The oldest PoW Ethereum fork (2015). Our blockchain layer — FRKHASH secured, battle-tested, community owned.</p>
+        <a href="https://expanse.tech" target="_blank" class="eco-link">expanse.tech ↗</a>
+      </div>
+      <div class="eco-card">
+        <div class="eco-icon">🛠️</div>
+        <h3>Day1</h3>
+        <p>Management tools for the ecosystem. Build, deploy, and manage decentralized projects from day one.</p>
+        <a href="https://day1.build" target="_blank" class="eco-link">day1.build ↗</a>
+      </div>
+      <div class="eco-card">
+        <div class="eco-icon">🌍</div>
+        <h3>WAGMI</h3>
+        <p>The community collective. Research, education, deployment. Where digital meets reality and builders meet builders.</p>
+        <a href="#" onclick="switchTab('exchange');return false" class="eco-link">wagmi.io →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Verticals -->
+  <section class="mission-section">
+    <h2 class="section-title">Verticals</h2>
+    <p class="section-desc">Find your passion. There's a place for everyone — artists, devs, farmers, gamers, builders, dreamers.</p>
+    <div class="verticals-grid">
+      <div class="vertical-card"><span class="v-emoji">🎨</span><h4>Creative Collective</h4><p>Artists, musicians, fashion designers & collectors. Curating exhibitions, galleries, and the Mooney NFT marketplace.</p></div>
+      <div class="vertical-card"><span class="v-emoji">🏠</span><h4>Node Network</h4><p>Physical manifestations of WAGMI — bars, hostels, hotels, farms, galleries, dev houses where digital meets reality.</p></div>
+      <div class="vertical-card"><span class="v-emoji">💰</span><h4>Token Environment</h4><p>All things crypto — staking, farming, trading, and a 24/7 help desk. Your on-ramp to DeFi on Expanse.</p></div>
+      <div class="vertical-card"><span class="v-emoji">🖼️</span><h4>MOONEY NFTs</h4><p>Where art and music smash into blockchain. Create, collect, and trade on our multi-chain NFT platform.</p></div>
+      <div class="vertical-card"><span class="v-emoji">🤝</span><h4>WAGMU Meetups</h4><p>We're All Gonna Meet Up! Real-life crypto clubs making hometowns better, one gathering at a time.</p></div>
+      <div class="vertical-card"><span class="v-emoji">🌾</span><h4>Agricultural Collective</h4><p>Connecting farms, cooperatives, and volunteers. Taking local farming to the worldwide stage.</p></div>
+      <div class="vertical-card"><span class="v-emoji">🎮</span><h4>GameZone</h4><p>The zanniest place in WAGMI — from unicycle football to mobile app development. Developers and gamers unite.</p></div>
+      <div class="vertical-card"><span class="v-emoji">🔬</span><h4>Research Team</h4><p>Grant writing, experiment design, publishing results. Architecture for our most ambitious experiments.</p></div>
+      <div class="vertical-card"><span class="v-emoji">🚀</span><h4>Crowdfund</h4><p>Incubating new and ambitious ideas. From dream to reality with the full force of the community behind you.</p></div>
+    </div>
+  </section>
+
+  <!-- Constitution Highlights -->
+  <section class="mission-section">
+    <h2 class="section-title">Governance by the People</h2>
+    <p class="section-desc">Our DAO Constitution establishes bicameral legislation — ensuring both equal voice and stakeholder commitment.</p>
+    <div class="gov-grid">
+      <div class="gov-card">
+        <h4>🗳️ Popular Vote</h4>
+        <p>One person = One vote, verified through pseudonym pair proof-of-personhood. Every human has a voice regardless of stake. Think of it as the House of Representatives.</p>
+      </div>
+      <div class="gov-card">
+        <h4>⚖️ Weighted Vote</h4>
+        <p>Proportional to DAO ownership. The Senate — passing or denying legislation proposed by the popular vote. Skin in the game meets democratic will.</p>
+      </div>
+      <div class="gov-card">
+        <h4>🛡️ Arbitration Layer</h4>
+        <p>13 Primary Arbiters elected by proof-of-personhood vote. They judge constitutionality and resolve internal disputes with precedent-setting rulings.</p>
+      </div>
+      <div class="gov-card">
+        <h4>💎 Photon Monetary Policy</h4>
+        <p>Community-controlled variables: tax rates, burn, mint, redistribution, UBI, and Economic Impact Zones — all voted line by line each session.</p>
+      </div>
+    </div>
+    <div class="gov-principles">
+      <h4>Core Principles</h4>
+      <div class="principles-row">
+        <span class="principle">🌐 Universal Inclusion</span>
+        <span class="principle">🧠 Intelligent Systems Design</span>
+        <span class="principle">🌱 Eco Conscious</span>
+        <span class="principle">👥 Community Centric</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Builders Manual Spirit -->
+  <section class="mission-section">
+    <h2 class="section-title">The Builder's Path</h2>
+    <div class="builders-grid">
+      <div class="builder-item">
+        <span class="builder-num">01</span>
+        <h4>Possess a Servant's Heart</h4>
+        <p>Get genuine joy from helping people — online or offline. This one requirement is paramount.</p>
+      </div>
+      <div class="builder-item">
+        <span class="builder-num">02</span>
+        <h4>Affect Your Local Community</h4>
+        <p>Organize a trash pickup, help a local farmer, start a project. This is how WAGMI talks to the world outside of crypto — through good works.</p>
+      </div>
+      <div class="builder-item">
+        <span class="builder-num">03</span>
+        <h4>Start a Real-World Enterprise</h4>
+        <p>Get out from behind the computer. When the time comes, the entire force of the WAGMI Think Tank is there to help you thrive.</p>
+      </div>
+      <div class="builder-item">
+        <span class="builder-num">04</span>
+        <h4>Grow the Collective</h4>
+        <p>Bring new minds every week. By teaching, we hone our craft and learn how others learn. That knowledge passes around and we all gain.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expanse + DeFi -->
+  <section class="mission-section">
+    <h2 class="section-title">Powered by Expanse</h2>
+    <p class="section-desc">Built on the oldest PoW Ethereum fork (2015), founded by Christopher Franko. Transaction fees at 1/100th of a cent. Real DeFi for real people.</p>
+    <div class="expanse-features">
+      <div class="exp-feat"><span class="exp-val">2015</span><span class="exp-lbl">Oldest ETH Fork</span></div>
+      <div class="exp-feat"><span class="exp-val">$0.0001</span><span class="exp-lbl">Avg Tx Fee</span></div>
+      <div class="exp-feat"><span class="exp-val">FRKHASH</span><span class="exp-lbl">PoW Algorithm</span></div>
+      <div class="exp-feat"><span class="exp-val">0.5%</span><span class="exp-lbl">Daily ROI Staking</span></div>
+    </div>
+    <div class="mission-cta">
+      <button class="btn-primary" onclick="switchTab('staking')">Start Staking →</button>
+      <button class="btn-secondary" onclick="switchTab('exchange')">Trade on DEX →</button>
+    </div>
+  </section>
+
+</main>
+
 <!-- ==================== EXCHANGE TAB ==================== -->
-<main class="tab-content active" id="tab-exchange">
+<main class="tab-content" id="tab-exchange">
   <div class="exchange-layout">
     <!-- Swap Card -->
     <div class="swap-container">
@@ -465,6 +620,41 @@
     </div>
   </div>
 </div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="images/expanse-logo.jpg" alt="WAGMI" class="logo-img">
+        <span class="logo-text">WAGMI</span>
+      </div>
+      <p class="footer-tagline">We're All Gonna Make It — an autonomous, decentralized collective building a better world through technology, community, and good works.</p>
+    </div>
+    <div class="footer-links-group">
+      <h4>Ecosystem</h4>
+      <a href="https://dao1.earth" target="_blank">DAO1 — Governance</a>
+      <a href="https://expanse.tech" target="_blank">Expanse — Blockchain</a>
+      <a href="https://day1.build" target="_blank">Day1 — Tools</a>
+    </div>
+    <div class="footer-links-group">
+      <h4>Community</h4>
+      <a href="#" onclick="switchTab('mission');return false">Mission</a>
+      <a href="#" onclick="switchTab('daos');return false">Governance</a>
+      <a href="#" onclick="switchTab('exchange');return false">Exchange</a>
+    </div>
+    <div class="footer-links-group">
+      <h4>Connect</h4>
+      <a href="#">Discord</a>
+      <a href="#">Telegram</a>
+      <a href="#">Twitter / X</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>In Hoc Signo Vinces</span>
+    <span>© 2025 WAGMI Think Tank · DAO1</span>
+  </div>
+</footer>
 
 <!-- Toast -->
 <div class="toast-container" id="toastContainer"></div>

@@ -165,7 +165,7 @@ const TRANSACTIONS = [
 // ============================================================
 // STATE
 // ============================================================
-let currentTab = 'exchange';
+let currentTab = 'mission';
 let swapFrom = 0; // index into TOKENS
 let swapTo = 1;
 let tokenSelectTarget = 'from';

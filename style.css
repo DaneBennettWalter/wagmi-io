@@ -375,3 +375,88 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appear
 }
 
 .connected-dot { display:inline-block; width:8px; height:8px; background:#00ff88; border-radius:50%; margin-right:8px; animation: pulse 2s infinite; }
+
+/* ========== MISSION TAB ========== */
+.mission-hero{text-align:center;padding:60px 20px 40px;max-width:800px;margin:0 auto}
+.mission-hero-badge{display:inline-block;padding:6px 18px;background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.25);border-radius:20px;color:var(--green);font-size:14px;font-weight:600;margin-bottom:24px;letter-spacing:1px}
+.mission-hero-title{font-size:clamp(32px,6vw,56px);font-weight:700;line-height:1.1;margin-bottom:20px}
+.gradient-text{background:linear-gradient(135deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.mission-hero-sub{font-size:18px;color:var(--text2);line-height:1.6;max-width:640px;margin:0 auto 32px}
+.mission-hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+.mission-hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:600px;margin:0 auto}
+.mh-stat{text-align:center}
+.mh-val{display:block;font-size:24px;font-weight:700;color:var(--green)}
+.mh-lbl{display:block;font-size:12px;color:var(--text2);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+
+.mission-quote-block{max-width:700px;margin:40px auto;padding:32px;background:var(--bg2);border-left:3px solid var(--green);border-radius:0 var(--radius) var(--radius) 0}
+.mission-quote-block blockquote{font-size:17px;color:var(--text);line-height:1.7;font-style:italic}
+.mission-quote-block cite{display:block;margin-top:12px;font-size:13px;color:var(--text2);font-style:normal}
+
+.mission-section{margin:56px 0;max-width:1100px;margin-left:auto;margin-right:auto}
+.section-title{font-size:28px;font-weight:700;margin-bottom:8px;text-align:center}
+.section-desc{color:var(--text2);text-align:center;max-width:640px;margin:0 auto 32px;line-height:1.6}
+
+/* Ecosystem */
+.ecosystem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.eco-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:.2s}
+.eco-card:hover{border-color:var(--green);transform:translateY(-2px)}
+.eco-icon{font-size:32px;margin-bottom:12px}
+.eco-card h3{font-size:18px;margin-bottom:8px}
+.eco-card p{color:var(--text2);font-size:14px;line-height:1.5;margin-bottom:12px}
+.eco-link{font-size:13px;color:var(--cyan);font-weight:500}
+
+/* Verticals */
+.verticals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.vertical-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:.2s}
+.vertical-card:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.v-emoji{font-size:28px;display:block;margin-bottom:10px}
+.vertical-card h4{font-size:16px;margin-bottom:6px}
+.vertical-card p{color:var(--text2);font-size:13px;line-height:1.5}
+
+/* Governance */
+.gov-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:24px}
+.gov-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.gov-card h4{font-size:16px;margin-bottom:8px}
+.gov-card p{color:var(--text2);font-size:13px;line-height:1.6}
+.gov-principles{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center}
+.gov-principles h4{margin-bottom:16px;font-size:16px}
+.principles-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.principle{padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:14px;color:var(--text2)}
+
+/* Builders */
+.builders-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.builder-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.builder-num{font-size:32px;font-weight:700;color:var(--green);opacity:.4;display:block;margin-bottom:8px}
+.builder-item h4{font-size:16px;margin-bottom:6px}
+.builder-item p{color:var(--text2);font-size:13px;line-height:1.5}
+
+/* Expanse Features */
+.expanse-features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.exp-feat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center}
+.exp-val{display:block;font-size:22px;font-weight:700;color:var(--cyan)}
+.exp-lbl{display:block;font-size:12px;color:var(--text2);margin-top:4px;text-transform:uppercase}
+.mission-cta{display:flex;gap:12px;justify-content:center}
+
+/* ========== FOOTER ========== */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:60px;position:relative;z-index:1}
+.footer-inner{max-width:1100px;margin:0 auto;padding:48px 24px 32px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}
+.footer-brand{max-width:300px}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.footer-tagline{color:var(--text2);font-size:13px;line-height:1.6}
+.footer-links-group h4{font-size:14px;font-weight:600;margin-bottom:12px;color:var(--text)}
+.footer-links-group a{display:block;color:var(--text2);font-size:13px;padding:4px 0;transition:.2s;text-decoration:none}
+.footer-links-group a:hover{color:var(--green)}
+.footer-bottom{max-width:1100px;margin:0 auto;padding:16px 24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:12px;color:var(--text3)}
+
+@media(max-width:768px){
+  .mission-hero-stats{grid-template-columns:repeat(2,1fr)}
+  .expanse-features{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .footer-brand{max-width:none;grid-column:1/-1}
+}
+@media(max-width:480px){
+  .mission-hero-stats{grid-template-columns:1fr 1fr}
+  .expanse-features{grid-template-columns:1fr 1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:4px;text-align:center}
+}
